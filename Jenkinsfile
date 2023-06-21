@@ -13,7 +13,7 @@ node {
             }
         }
     }
-    docker.image('cdrx/pyinstaller-linux:python2').inside {
+    docker.image('cdrx/pyinstaller-linux:python2').inside('-it') {
         stage('Deploy') {
             try {
                 input message: '(Click "Proceed" to continue)'
