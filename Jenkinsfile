@@ -30,6 +30,7 @@ node {
                 input message: 'Lanjutkan ke tahap Deploy?'
                 dir(path: env.BUILD_ID) { 
                     unstash(name: 'compiled-results') 
+                    echo "--- [CHECK] ---"
                     sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F add2vals.py'" 
                 }
                 sleep(time: 1, unit: 'MINUTES')
