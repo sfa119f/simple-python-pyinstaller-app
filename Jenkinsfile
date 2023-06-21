@@ -13,17 +13,17 @@ node {
             }
         }
     }
-    docker.image('cdrx/pyinstaller-linux:python2').inside('-it') {
-        stage('Deploy') {
-            try {
-                input message: '(Click "Proceed" to continue)'
-                echo '---[START DEPLOY]---'
-                sh 'pyinstaller --onefile sources/add2vals.py'
-                echo '---[FINISH DEPLOY]---'
-                archiveArtifacts 'dist/add2vals'
-            } catch (err) {
-                echo 'Something failed' + err.getMessage()
-            }
-        }
-    }
+    // docker.image('cdrx/pyinstaller-linux:python2').inside('-it') {
+    //     stage('Deploy') {
+    //         try {
+    //             input message: '(Click "Proceed" to continue)'
+    //             echo '---[START DEPLOY]---'
+    //             sh 'pyinstaller --onefile sources/add2vals.py'
+    //             echo '---[FINISH DEPLOY]---'
+    //             archiveArtifacts 'dist/add2vals'
+    //         } catch (err) {
+    //             echo 'Something failed' + err.getMessage()
+    //         }
+    //     }
+    // }
 }
