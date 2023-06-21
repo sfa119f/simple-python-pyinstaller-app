@@ -27,9 +27,6 @@ pipeline {
                 }
             }
         }
-        steps {
-            input message: 'Lanjutkan ke tahap Deploy?'
-        }
         stage('Deploy') { 
             agent any
             environment { 
@@ -37,6 +34,7 @@ pipeline {
                 IMAGE = 'cdrx/pyinstaller-linux:python2'
             }
             steps {
+                input message: 'Lanjutkan ke tahap Deploy?'
                 dir(path: env.BUILD_ID) { 
                     unstash(name: 'compiled-results') 
                     sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F add2vals.py'" 
