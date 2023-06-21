@@ -14,9 +14,9 @@ node {
         }
     }
     docker.image('cdrx/pyinstaller-linux:python2').inside {
-        withEnv
         stage('Deploy') {
             try {
+                input message: '(Click "Proceed" to continue)'
                 echo '---[START DEPLOY]---'
                 sh 'pyinstaller --onefile sources/add2vals.py'
                 echo '---[FINISH DEPLOY]---'
